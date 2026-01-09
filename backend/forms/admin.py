@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import Form, FormField
 
-# Register your models here.
+class FormFieldInline(admin.TabularInline):
+    model = FormField
+    extra = 1
+
+@admin.register(Form)
+class FormAdmin(admin.ModelAdmin):
+    inlines = [FormFieldInline]
