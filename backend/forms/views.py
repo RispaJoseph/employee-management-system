@@ -4,9 +4,15 @@ from .serializers import FormSerializer, FormFieldSerializer
 
 
 class FormCreateListView(generics.ListCreateAPIView):
-    queryset = Form.objects.all()
     serializer_class = FormSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Form.objects.filter(user=self.request.user)
+
+    def get_serializer_context(self):
+        return {"request": self.request}
+
 
 
 class FormFieldCreateView(generics.CreateAPIView):
@@ -15,6 +21,9 @@ class FormFieldCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     
 class FormDeleteAPIView(generics.DestroyAPIView):
-    queryset = Form.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Form.objects.filter(user=self.request.user)
+
 

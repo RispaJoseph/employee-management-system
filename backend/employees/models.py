@@ -1,8 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 from forms.models import Form, FormField
 
 
 class Employee(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="employees"
+    )
     form = models.ForeignKey(Form, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

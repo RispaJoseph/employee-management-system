@@ -10,6 +10,9 @@ class EmployeeCreateView(generics.CreateAPIView):
     serializer_class = EmployeeCreateSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_serializer_context(self):
+        return {"request": self.request}
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -20,12 +23,13 @@ class EmployeeCreateView(generics.CreateAPIView):
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)
 
 
+
 class EmployeeListView(generics.ListAPIView):
     serializer_class = EmployeeListSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        queryset = Employee.objects.all()
+        queryset = Employee.objects.filter(user=self.request.user)
 
         field_label = self.request.query_params.get('field')
         value = self.request.query_params.get('value')
@@ -39,6 +43,10 @@ class EmployeeListView(generics.ListAPIView):
         return queryset.distinct()
 
 
+
 class EmployeeDeleteView(generics.DestroyAPIView):
-    queryset = Employee.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Employee.objects.filter(user=self.request.user)
+

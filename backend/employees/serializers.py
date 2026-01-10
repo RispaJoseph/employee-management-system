@@ -14,9 +14,17 @@ class EmployeeCreateSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         from forms.models import Form
+        request = self.context["request"]
 
-        form = Form.objects.get(id=validated_data['form'])
-        employee = Employee.objects.create(form=form)
+        form = Form.objects.get(
+            id=validated_data['form'],
+            user=request.user   # 🔒 SECURITY
+        )
+
+        employee = Employee.objects.create(
+            form=form,
+            user=request.user
+        )
 
         for item in validated_data['data']:
             EmployeeData.objects.create(
@@ -26,6 +34,7 @@ class EmployeeCreateSerializer(serializers.Serializer):
             )
 
         return employee
+
 
 
 class EmployeeListSerializer(serializers.ModelSerializer):
