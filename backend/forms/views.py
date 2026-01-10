@@ -13,3 +13,8 @@ class FormFieldCreateView(generics.CreateAPIView):
     queryset = FormField.objects.all()
     serializer_class = FormFieldSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
+class FormDeleteAPIView(generics.DestroyAPIView):
+    queryset = Form.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
