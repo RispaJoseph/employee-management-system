@@ -62,8 +62,10 @@ employee-management-system/
 
 ### 1. Create Virtual Environment
 
+```bash
 python -m venv venv  
 source venv/bin/activate
+```
 
 ### 2. Install Dependencies
 
@@ -71,12 +73,16 @@ pip install django djangorestframework djangorestframework-simplejwt django-cors
 
 ### 3. Run Migrations
 
+```bash
 python manage.py makemigrations  
 python manage.py migrate
+```
 
 ### 4. Start Backend Server
 
+```bash
 python manage.py runserver
+```
 
 Backend runs at:  
 http://127.0.0.1:8000/
@@ -87,12 +93,15 @@ http://127.0.0.1:8000/
 
 ### 1. Open Frontend Folder
 
+```bash
 cd frontend
-
+```
 
 ### 2. Run Frontend
 
+```bash
 python -m http.server 5500
+```
 
 ### Entry Pages
 
