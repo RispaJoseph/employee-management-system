@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>Employees Management System</h2>
+        <div class="header-actions">
+            <button onclick="goBack()">Back</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h2>Create Employee</h2>
+
+        <!-- Form selector -->
+        <select id="formSelector">
+            <option value="" disabled selected>Select a Form</option>
+        </select>
+
+
+        <!-- Dynamic fields -->
+        <form id="employeeForm"></form>
+
+        <button onclick="submitEmployee()">Submit</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/employee-create.js"></script>
+</body>
+
+</html>

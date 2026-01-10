@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h2>Employees Management System</h2>
+        <div class="header-actions">
+            <button onclick="goToProfile()">Profile</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="page-layout">
+
+        <!-- LEFT: Employee List -->
+        <div class="container employee-section">
+
+            <div class="section-header">
+                <span>Employee List</span>
+                <span class="action-link" onclick="goToCreate()">+ Create Employee</span>
+            </div>
+
+            <ul id="employeeList"></ul>
+        </div>
+
+
+        <!-- RIGHT: Forms Section -->
+        <div class="container form-section">
+
+            <div class="section-header">
+                <span>Forms Designs</span>
+                <span class="action-link" onclick="window.location.href='form-builder.html'">
+            + Form Builder
+        </span>
+            </div>
+
+            <ul id="formList"></ul>
+        </div>
+
+
+    </div>
+
+    <!-- Employee Modal (unchanged) -->
+    <div id="employeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalEmployeeName"></h3>
+            <div id="modalEmployeeDetails"></div>
+            <div class="modal-actions">
+                <button id="editBtn">Edit</button>
+                <button id="deleteBtn" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Structure Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFormModal()">&times;</span>
+
+            <h3 id="modalFormName"></h3>
+
+            <div id="modalFormFields"></div>
+
+            <div class="modal-actions">
+                <button id="deleteFormBtn" class="delete-btn">Delete Form</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/employee-list.js"></script>
+
+</body>
+
+
+</html>

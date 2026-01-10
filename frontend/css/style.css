@@ -1,0 +1,338 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.header-actions button {
+    width: auto;
+    margin-left: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #135ba1;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fafafa;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+li button {
+    width: auto;
+    background-color: #e53935;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+li button:hover {
+    background-color: #c62828;
+}
+
+.field-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    cursor: grab;
+    background-color: #fafafa;
+}
+
+.field-row:active {
+    cursor: grabbing;
+}
+
+.field-row input,
+.field-row select {
+    flex: 1;
+}
+
+
+/* Employee list card */
+
+.employee-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* space between number & name */
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.employee-info h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.employee-field {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.employee-field .label {
+    font-weight: bold;
+    color: #555;
+    min-width: 120px;
+}
+
+.employee-field .value {
+    color: #222;
+}
+
+
+/* Delete button */
+
+.delete-btn {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #c62828;
+}
+
+
+/* Modal styles */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background: #fff;
+    width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+employee-name {
+    cursor: pointer;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.employee-name:hover {
+    text-decoration: underline;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.serial-no {
+    font-weight: bold;
+    color: #555;
+}
+
+.create-employee-link {
+    font-weight: 600;
+    color: #1976d2;
+    cursor: pointer;
+    margin-bottom: 14px;
+    /* 🔹 alignment */
+    display: block;
+    text-align: right;
+}
+
+.create-employee-link:hover {
+    text-decoration: underline;
+}
+
+.page-layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+/* Left: Employees */
+
+.employee-section {
+    flex: 2;
+}
+
+
+/* Right: Forms */
+
+.form-section {
+    flex: 1;
+}
+
+
+/* Forms header */
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+/* Form builder link */
+
+.form-builder-link {
+    color: #1976d2;
+    cursor: pointer;
+}
+
+.form-builder-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Forms list */
+
+#formList li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-field-row {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.action-link {
+    color: #1976d2;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.form-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
