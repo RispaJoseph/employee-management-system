@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions
+from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Employee
@@ -20,9 +21,22 @@ class EmployeeCreateView(generics.CreateAPIView):
 
 
 class EmployeeListView(generics.ListAPIView):
-    queryset = Employee.objects.all()
     serializer_class = EmployeeListSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = Employee.objects.all()
+
+        field_label = self.request.query_params.get('field')
+        value = self.request.query_params.get('value')
+
+        if field_label and value:
+            queryset = queryset.filter(
+                data__field__label__icontains=field_label,
+                data__value__icontains=value
+            )
+
+        return queryset.distinct()
 
 
 class EmployeeDeleteView(generics.DestroyAPIView):
