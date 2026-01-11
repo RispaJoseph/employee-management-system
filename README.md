@@ -131,4 +131,3 @@ python -m http.server 5500
 ## 👩‍💻 Author
 
 **Rispa Joseph**  
-Python / Full Stack Developer
