@@ -336,3 +336,13 @@ select {
     font-weight: 600;
     margin-bottom: 6px;
 }
+
+.search-bar {
+    margin: 12px 0;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+}

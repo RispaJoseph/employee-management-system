@@ -28,9 +28,14 @@
                 <span class="action-link" onclick="goToCreate()">+ Create Employee</span>
             </div>
 
+            <!-- 🔍 Live Search -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search employees..." oninput="filterEmployees()" />
+            </div>
+
+
             <ul id="employeeList"></ul>
         </div>
-
 
         <!-- RIGHT: Forms Section -->
         <div class="container form-section">
@@ -38,17 +43,16 @@
             <div class="section-header">
                 <span>Forms Designs</span>
                 <span class="action-link" onclick="window.location.href='form-builder.html'">
-            + Form Builder
-        </span>
+                    + Form Builder
+                </span>
             </div>
 
             <ul id="formList"></ul>
         </div>
 
-
     </div>
 
-    <!-- Employee Modal (unchanged) -->
+    <!-- Employee Modal -->
     <div id="employeeModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -65,24 +69,17 @@
     <div id="formModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeFormModal()">&times;</span>
-
             <h3 id="modalFormName"></h3>
-
             <div id="modalFormFields"></div>
-
             <div class="modal-actions">
                 <button id="deleteFormBtn" class="delete-btn">Delete Form</button>
             </div>
         </div>
     </div>
 
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/employee-list.js"></script>
 
 </body>
-
 
 </html>
