@@ -31,16 +31,23 @@ class EmployeeListView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Employee.objects.filter(user=self.request.user)
 
-        field_label = self.request.query_params.get('field')
-        value = self.request.query_params.get('value')
+        search = self.request.query_params.get("search")
+        field_label = self.request.query_params.get("field")
+        value = self.request.query_params.get("value")
 
-        if field_label and value:
+        if search:
+            queryset = queryset.filter(
+                data__value__icontains=search
+            )
+
+        elif field_label and value:
             queryset = queryset.filter(
                 data__field__label__icontains=field_label,
                 data__value__icontains=value
             )
 
         return queryset.distinct()
+
 
 
 
