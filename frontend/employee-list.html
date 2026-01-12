@@ -30,7 +30,7 @@
 
             <!-- 🔍 Live Search -->
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search employees..." oninput="filterEmployees()" />
+                <input type="text" id="searchInput" placeholder="Search employees..." oninput="onSearchInput(event)" />
             </div>
 
 
@@ -60,8 +60,10 @@
             <div id="modalEmployeeDetails"></div>
             <div class="modal-actions">
                 <button id="editBtn">Edit</button>
+                <button id="saveBtn" style="display:none">Save</button>
                 <button id="deleteBtn" class="delete-btn">Delete</button>
             </div>
+
         </div>
     </div>
 

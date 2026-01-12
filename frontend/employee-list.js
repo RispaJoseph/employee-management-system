@@ -35,15 +35,15 @@ function getEmployeeName(employee) {
 
 function loadEmployees() {
     axios.get(EMPLOYEE_API, {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    .then(res => {
-        allEmployees = res.data || [];
-        renderEmployees(allEmployees);
-    })
-    .catch(() => {
-        alert("Failed to load employees");
-    });
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(res => {
+            allEmployees = res.data || [];
+            renderEmployees(allEmployees);
+        })
+        .catch(() => {
+            alert("Failed to load employees");
+        });
 }
 
 /* ===========================
@@ -99,32 +99,32 @@ function onSearchInput(e) {
 =========================== */
 
 axios.get(FORM_API, {
-    headers: { Authorization: `Bearer ${token}` }
-})
-.then(res => {
-    const formList = document.getElementById("formList");
-    formList.innerHTML = "";
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(res => {
+        const formList = document.getElementById("formList");
+        formList.innerHTML = "";
 
-    const forms = res.data || [];
+        const forms = res.data || [];
 
-    if (!forms.length) {
-        formList.innerHTML = "<li>No forms created</li>";
-        return;
-    }
+        if (!forms.length) {
+            formList.innerHTML = "<li>No forms created</li>";
+            return;
+        }
 
-    forms.forEach((form, index) => {
-        const li = document.createElement("li");
-        li.className = "form-card";
+        forms.forEach((form, index) => {
+            const li = document.createElement("li");
+            li.className = "form-card";
 
-        li.innerHTML = `
+            li.innerHTML = `
             <span class="serial-no">${index + 1}.</span>
             <span class="employee-name">${form.name}</span>
         `;
 
-        li.onclick = () => openFormModal(form);
-        formList.appendChild(li);
+            li.onclick = () => openFormModal(form);
+            formList.appendChild(li);
+        });
     });
-});
 
 /* ===========================
    EMPLOYEE MODAL
@@ -198,18 +198,16 @@ function saveEmployeeChanges() {
     });
 
     axios.put(
-        `${EMPLOYEE_API}${selectedEmployeeId}/update/`,
-        { data: updatedData },
-        { headers: { Authorization: `Bearer ${token}` } }
-    )
-    .then(() => {
-        alert("Employee updated successfully");
-        closeModal();
-        loadEmployees();
-    })
-    .catch(() => {
-        alert("Failed to update employee");
-    });
+            `${EMPLOYEE_API}${selectedEmployeeId}/update/`, { data: updatedData }, { headers: { Authorization: `Bearer ${token}` } }
+        )
+        .then(() => {
+            alert("Employee updated successfully");
+            closeModal();
+            loadEmployees();
+        })
+        .catch(() => {
+            alert("Failed to update employee");
+        });
 }
 
 function closeModal() {
@@ -254,13 +252,13 @@ function deleteForm() {
     if (!confirm("Delete this form?")) return;
 
     axios.delete(`${FORM_API}${selectedFormId}/delete/`, {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    .then(() => {
-        alert("Form deleted");
-        closeFormModal();
-        loadEmployees();
-    });
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(() => {
+            alert("Form deleted");
+            closeFormModal();
+            loadEmployees();
+        });
 }
 
 /* ===========================
@@ -271,13 +269,13 @@ function deleteEmployee(id) {
     if (!confirm("Delete this employee?")) return;
 
     axios.delete(`${EMPLOYEE_API}${id}/delete/`, {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    .then(() => {
-        alert("Employee deleted");
-        closeModal();
-        loadEmployees();
-    });
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(() => {
+            alert("Employee deleted");
+            closeModal();
+            loadEmployees();
+        });
 }
 
 /* ===========================
