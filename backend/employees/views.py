@@ -2,8 +2,8 @@ from rest_framework import generics, permissions
 from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Employee
-from .serializers import EmployeeCreateSerializer, EmployeeListSerializer
+from .models import Employee, EmployeeData
+from .serializers import EmployeeCreateSerializer, EmployeeListSerializer, EmployeeUpdateSerializer
 
 
 class EmployeeCreateView(generics.CreateAPIView):
@@ -48,6 +48,14 @@ class EmployeeListView(generics.ListAPIView):
 
         return queryset.distinct()
 
+
+class EmployeeUpdateView(generics.UpdateAPIView):
+    serializer_class = EmployeeUpdateSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_url_kwarg = "pk"
+
+    def get_queryset(self):
+        return Employee.objects.filter(user=self.request.user)
 
 
 

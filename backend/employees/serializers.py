@@ -3,9 +3,10 @@ from .models import Employee, EmployeeData
 
 
 class EmployeeDataSerializer(serializers.ModelSerializer):
+    field_label = serializers.CharField(source="field.label", read_only=True)
     class Meta:
         model = EmployeeData
-        fields = ['field', 'value']
+        fields = ['field', 'field_label', 'value']
 
 
 class EmployeeCreateSerializer(serializers.Serializer):
@@ -43,3 +44,18 @@ class EmployeeListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = ['id', 'form', 'data', 'created_at']
+
+
+class EmployeeUpdateSerializer(serializers.Serializer):
+    data = EmployeeDataSerializer(many=True)
+
+    def update(self, instance, validated_data):
+        data = validated_data.get("data", [])
+
+        for item in data:
+            EmployeeData.objects.filter(
+                employee=instance,
+                field_id=item["field"]
+            ).update(value=item["value"])
+
+        return instance
